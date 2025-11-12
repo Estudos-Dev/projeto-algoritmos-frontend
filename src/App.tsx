@@ -1,9 +1,12 @@
+import { columns } from "./components/ProductTable/columns"
+import { DataTable } from "./components/ProductTable/DataTable"
+import { products } from "./types/Product"
 
 function App() {
   return (
-    <>
-      <h1>Projeto Algoritmos</h1>
-    </>
+    <div className="w-full flex min-h-svh flex-col items-center justify-center">
+      <DataTable columns={columns} data={products}/>
+    </div>
   )
 }
 

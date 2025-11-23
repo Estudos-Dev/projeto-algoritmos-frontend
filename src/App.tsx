@@ -1,4 +1,9 @@
-import { Route, BrowserRouter as Router, Routes } from "react-router-dom"
+import {
+  Navigate,
+  Route,
+  BrowserRouter as Router,
+  Routes,
+} from "react-router-dom"
 import { library } from "@fortawesome/fontawesome-svg-core"
 import { fab } from "@fortawesome/free-brands-svg-icons"
 import { fas } from "@fortawesome/free-solid-svg-icons"
@@ -28,7 +33,8 @@ function AppRoutes() {
   return (
     <Router>
       <Routes>
-        <Route path='/' element={<App />} />
+        <Route path='/' element={<Navigate to='/home' />} />
+        <Route path='/home' element={<App />} />
       </Routes>
     </Router>
   )

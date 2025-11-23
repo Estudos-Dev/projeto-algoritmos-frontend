@@ -1,6 +1,5 @@
 import { useState } from "react"
-import salesService from "@/services/sales-service"
-import type { SaleResponse } from "@/types/Sale"
+import salesService, { type SaleResponse } from "@/services/sales-service"
 import { QuickSort, BubbleSort, MergeSort } from "@/services/algorithm-service"
 
 interface PerformanceHistory {
@@ -33,7 +32,6 @@ export const Ranking = () => {
   const [algorithmDurationSec, setAlgorithmDurationSec] = useState<
     number | null
   >(null)
-  const [fetchDurationSec, setFetchDurationSec] = useState<number | null>(null)
   const [loadingStage, setLoadingStage] = useState<
     "idle" | "fetching" | "generating"
   >("idle")
@@ -116,7 +114,8 @@ export const Ranking = () => {
       }
     }
     preloadData()
-  }, [])
+    // eslint-disable-next-line
+  })
 
   const handleStart = async () => {
     try {
@@ -135,7 +134,6 @@ export const Ranking = () => {
 
         const duration = (sortEnd - sortStart) / 1000
         setAlgorithmDurationSec(duration)
-        setFetchDurationSec(0)
         addToHistory(algorithm, sortOrder, quantity, duration)
         setLoadingStage("idle")
         return
@@ -143,9 +141,8 @@ export const Ranking = () => {
 
       // Se não tem, busca do backend
       setLoadingStage("fetching")
-      const fetchStart = performance.now()
+
       const data = await salesService.getSalles(quantity)
-      const fetchEnd = performance.now()
 
       setLoadingStage("generating")
       const sortStart = performance.now()
@@ -154,7 +151,6 @@ export const Ranking = () => {
 
       const duration = (sortEnd - sortStart) / 1000
       setCachedData((prev) => new Map(prev).set(quantity, data))
-      setFetchDurationSec((fetchEnd - fetchStart) / 1000)
       setAlgorithmDurationSec(duration)
       addToHistory(algorithm, sortOrder, quantity, duration)
     } catch (error) {
@@ -221,8 +217,11 @@ export const Ranking = () => {
   }
 
   return (
-    <div className='w-full flex flex-col gap-3 sm:gap-4'>
-      <div className='bg-white p-3 sm:p-4 rounded-lg gap-3 sm:gap-4 flex flex-col shadow-sm'>
+    <div className='w-full flex flex-col gap-3 sm:gap-4 items-center'>
+      <h2 className='text-lg font-semibold text-slate-700'>
+        Ranking de vendas
+      </h2>
+      <div className='w-full bg-white p-3 sm:p-4 rounded-lg gap-3 sm:gap-4 flex flex-col shadow-sm'>
         {/* Filtros */}
         <div className='flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-3 min-w-0 flex-wrap'>
           <span className='text-sky-700 font-semibold text-sm whitespace-nowrap'>
@@ -240,7 +239,9 @@ export const Ranking = () => {
               <option value='50'>50</option>
               <option value='100'>100</option>
               <option value='500'>500</option>
-              <option value='1000'>1000</option>
+              <option value='1000'>1.000</option>
+              <option value='5000'>5.000</option>
+              <option value='10000'>10.000</option>
             </select>
           </label>
 
@@ -287,7 +288,7 @@ export const Ranking = () => {
       </div>
 
       {performanceHistory.length > 0 && (
-        <div className='bg-white p-3 sm:p-4 rounded-lg shadow-sm'>
+        <div className='w-full bg-white p-3 sm:p-4 rounded-lg shadow-sm'>
           <h3 className='text-xs sm:text-sm font-semibold text-slate-700 mb-3'>
             Histórico de Performance
           </h3>
@@ -329,7 +330,7 @@ export const Ranking = () => {
         </div>
       )}
 
-      <div className='bg-white p-3 sm:p-4 rounded-lg shadow-sm'>
+      <div className='w-full bg-white p-3 sm:p-4 rounded-lg shadow-sm'>
         <div className='mb-3 sm:mb-4'>
           <label className='block text-xs sm:text-sm font-semibold text-slate-700 mb-2'>
             Buscar por nome

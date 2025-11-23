@@ -1,4 +1,4 @@
-import type { SaleResponse } from "@/types/Sale"
+import type { SaleResponse } from "./sales-service"
 
 // QuickSort implementation that sorts sales by `total` in ascending or descending order
 export function QuickSort(

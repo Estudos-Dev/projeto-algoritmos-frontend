@@ -417,7 +417,7 @@ export const ManagementPanel = () => {
             </thead>
             <tbody>
               {filteredData.length > 0 ? (
-                filteredData.map((item: any, idx) => (
+                filteredData.map((item: any) => (
                   <tr
                     key={item.id}
                     className='odd:bg-gray-50 hover:bg-sky-50 transition-colors border-t border-slate-200'>

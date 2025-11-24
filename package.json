@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "start": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview"
@@ -22,13 +23,15 @@
     "axios": "^1.13.2",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
+    "global": "^4.4.0",
     "lucide-react": "^0.546.0",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
     "react-router-dom": "^7.9.3",
     "react-timer-hook": "^4.0.5",
     "tailwind-merge": "^3.3.1",
-    "tailwindcss": "^4.1.14"
+    "tailwindcss": "^4.1.14",
+    "vercel": "^48.10.10"
   },
   "devDependencies": {
     "@eslint/js": "^9.36.0",

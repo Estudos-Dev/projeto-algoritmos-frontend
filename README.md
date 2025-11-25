@@ -1,73 +1,62 @@
-# React + TypeScript + Vite
+Sales Rank Frontend - React + TypeScript
+Interface web interativa para análise comparativa de algoritmos de ordenação e gerenciamento de vendas.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+📋 Resumo
+Frontend que oferece:
 
-Currently, two official plugins are available:
+Visualização e ranking de vendas com tabelas interativas
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Comparação de QuickSort, BubbleSort e MergeSort em tempo real
 
-## React Compiler
+Medição de performance com histórico das 3 últimas execuções
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Busca linear (Linear Search) integrada
 
-## Expanding the ESLint configuration
+CRUD completo para clientes, vendedores, produtos
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+Interface responsiva para mobile, tablet e desktop
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+🛠️ Tecnologias
+React 18.x
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+TypeScript 5.x
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+Vite 5.x
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Tailwind CSS 3.x
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+Axios 1.6+
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+Node.js 18+
+
+🚀 Como Rodar
+Pré-requisitos
+bash
+Node.js 18+
+npm 9+ (ou yarn 3+)
+Git
+Instalar e Rodar
+bash
+
+# Clonar
+
+git clone https://github.com/seu-usuario/sales-rank-frontend.git
+cd sales-rank-frontend
+
+# Instalar dependências
+
+npm install
+
+# Rodar em desenvolvimento
+
+npm run dev
+Aplicação disponível em: http://localhost:5173
+
+🌐 Variáveis de Ambiente
+Criar .env.local na raiz:
+
+text
+
+# URL da API Backend
+
+VITE_API_URL=http://localhost:8080/api
